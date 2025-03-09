@@ -2,49 +2,59 @@
 const data = require('./data');
 
 
-// -- MAIN ------------------------------------------------------------------------------------------------------------
+// -- ENTRY ------------------------------------------------------------------------------------------------------------
 
-const arrayProgArgs = process.argv.slice(2);
+if (require.main === module) {
 
-if (arrayProgArgs.length > 0) {
-
-    const [key, value] = arrayProgArgs[0].split('=');
-
-    switch (key) {
-
-        case '--filter':
-
-            if (value) {
-
-                console.log(JSON.stringify(filterAnimals(data, value), null, 2));
-
-            } else {
-
-                displayUsage();
-
-            }
-
-            break;
-
-        case '--count':
-
-            console.log(JSON.stringify(formatWithCount(data), null, 2));
-            break;
-
-        default:
-
-            displayUsage();
-
-    }
-
-} else {
-
-   displayUsage();
+    main();
 
 }
 
 
 // -- FUNCTIONS --------------------------------------------------------------------------------------------------------
+
+function main() {
+
+    const arrayProgArgs = process.argv.slice(2);
+
+    if (arrayProgArgs.length > 0) {
+
+        const [key, value] = arrayProgArgs[0].split('=');
+
+        switch (key) {
+
+            case '--filter':
+
+                if (value) {
+
+                    console.log(JSON.stringify(filterAnimals(data, value), null, 2));
+
+                } else {
+
+                    displayUsage();
+
+                }
+
+                break;
+
+            case '--count':
+
+                console.log(JSON.stringify(formatWithCount(data), null, 2));
+                break;
+
+            default:
+
+                displayUsage();
+
+        }
+
+    } else{
+
+        displayUsage()
+
+    }
+
+}
 
 function displayUsage() {
 
@@ -95,3 +105,5 @@ function formatWithCount(arrayData) {
 
     });
 }
+
+module.exports = { filterAnimals, formatWithCount };

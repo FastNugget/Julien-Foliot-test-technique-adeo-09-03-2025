@@ -17,32 +17,40 @@ if (arrayProgArgs.length > 0) {
             if (value) {
 
                 console.log(JSON.stringify(filterAnimals(data, value), null, 2));
+
             } else {
 
-                console.log('Usage: node app.js --filter=<pattern> | --count');
+                displayUsage();
+
             }
 
             break;
 
         case '--count':
 
-            console.log(JSON.stringify(countEntities(data), null, 2));
-
+            console.log(JSON.stringify(formatWithCount(data), null, 2));
             break;
 
         default:
 
-            console.log('Usage: node app.js --filter=<pattern> | --count');
+            displayUsage();
 
     }
 
 } else {
 
-    console.log('Usage: node app.js --filter=<pattern> | --count');
+   displayUsage();
 
 }
 
+
 // -- FUNCTIONS --------------------------------------------------------------------------------------------------------
+
+function displayUsage() {
+
+    console.log('Usage: node app.js --filter=<pattern> | --count');
+
+}
 
 function filterAnimals(arrayData, patternToMatch) {
 
@@ -63,7 +71,7 @@ function filterAnimals(arrayData, patternToMatch) {
 
 }
 
-function countEntities(arrayData) {
+function formatWithCount(arrayData) {
 
     return arrayData.data.map(country => {
 
@@ -87,4 +95,3 @@ function countEntities(arrayData) {
 
     });
 }
-

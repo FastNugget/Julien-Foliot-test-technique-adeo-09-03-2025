@@ -1,0 +1,14 @@
+{
+  "name": "julien-foliot-test-technique-adeo-09-03-2025",
+  "version": "1.0.0",
+  "description": "An Adeo technical test.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cmd-1": "node app.js --filter=ry",
+    "cmd-2" : "node app.js --count"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

@@ -106,4 +106,6 @@ function formatWithCount(arrayData) {
     });
 }
 
+// -- EXPORTS ----------------------------------------------------------------------------------------------------------
+
 module.exports = { filterAnimals, formatWithCount };
